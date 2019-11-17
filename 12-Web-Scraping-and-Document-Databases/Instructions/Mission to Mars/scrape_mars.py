@@ -30,9 +30,9 @@ def scrape_mars_news():
         html = browser.html
         soup = BeautifulSoup(html, "html.parser")
 
-        news_title = getattr(soup.find('div', class_='content_title'),"text", None)
+        news_title = soup.find('div', class_='content_title').text
         
-        news_p = getattr(soup.find('div', class_='article_teaser_body'),"text" , None)
+        news_p = soup.find('div', class_='article_teaser_body').text
 
 
         mars_info['news_title'] = news_title
@@ -43,7 +43,7 @@ def scrape_mars_news():
 
     finally:
 
-        browser.quit()
+       browser.quit()
         
 #Mars Image
 def scrape_mars_image():
